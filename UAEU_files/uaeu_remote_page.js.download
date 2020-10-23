@@ -1,0 +1,89 @@
+jQuery(document).ready(function(){
+
+    if (remoteUrl != ''){
+
+		//show the loading icon
+		jQuery("#remote_content").html("<img id='waiting_image' src='https://www.uaeu.ac.ae/images/wait.gif' style='display:none;'>");
+		jQuery("#waiting_image").show();
+		
+		var paramsRemoteUrl;
+		var paramsPage;
+		var params;
+		var pageUrl = remoteUrl;
+		
+		//get all params from the remore url into an array
+		if (remoteUrl.indexOf('?') >= 0){
+			paramsRemoteUrl = getParameters(remoteUrl.slice(remoteUrl.indexOf('?')));	
+			pageUrl = remoteUrl.substring(0, remoteUrl.indexOf('?'));
+		}
+		
+        //get the params submitted to the page
+        paramsPage = getParameters();
+		
+		//merge all parameters
+		params = paramsPage.concat(paramsRemoteUrl);
+		
+		//remove repeated params and get final queryString
+		var queryString = "";
+        for (var i = 0; i < params.length; i++) {
+			var param = params[i];
+			if (hasValue(param)){
+				if (queryString.indexOf("&" + param[0] + "=") < 0){
+					queryString += "&" + param[0] + "=" + param[1];
+				}				
+			}
+        }	
+		
+		//encode the queryString
+        if(queryString.length>0) {
+            queryString = queryString.slice(1,queryString.length);
+            queryString = encodeURIComponent(queryString);
+        }
+
+        //build the ajax url
+        var url = "/includes/proxy.aspx?remoteUrl=" + encodeURIComponent(pageUrl) + "&params=" + queryString;
+
+        //send the ajax request to retrieve remote page
+        var request = jQuery.ajax({
+            url: url,
+            type: "post",
+            dataType: "html"
+        });
+        request.done(function(data) {
+            jQuery("#remote_content").html(data);
+			if (typeof onLoadRemoteUrl == 'function') { 
+  				onLoadRemoteUrl(); 
+			}
+        });
+    }
+
+});
+
+
+//return an array of queryString parameters and their values
+function getParameters(queryString) {
+    var myQueryString = "";
+    myQueryString = hasValue(queryString) ? queryString : location.search;
+    var params = [];
+
+    if (hasValue(myQueryString)){
+        var keysValues = myQueryString.split(/[\?&]+/);
+        for (i = 0; i < keysValues.length; i++) {
+            if (hasValue(keysValues[i])){
+                var keyValue = keysValues[i].split("=");
+                params.push([keyValue[0],decodeURIComponent(keyValue[1].replace(/\+/g, " "))]);
+            }
+        }
+    }
+    return params;
+}
+	
+//need to verify the usage of this method , I think it is not used
+function hasValue(param){
+    if (param==undefined) return false;
+    if (param==null) return false;
+    if (param=="") return false;
+    if (param=="null") return false;
+
+    return true;
+}

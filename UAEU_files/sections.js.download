@@ -1,0 +1,388 @@
+// various sections snippets site wide functions, plugins and scripts
+/******* Global variables *********/
+
+/***** initiate all needed sections scripts here in the document ready */
+$(document).ready(function(){
+            var slider = uaeu.uaeuSlider('.announcementSlider', 3, 1, 3600);
+            var slider = uaeu.uaeuSlider('.keyFactsSlider', 4, 1, 3000); 
+            var slider = uaeu.uaeuSlider('.StudySlider', 3, 1, 3000); 
+            //var slider = uaeu.uaeuSlider('.StudySliderBottom', 2, 1, 3000); 
+            var slider = uaeu.uaeuSlider('.latestNewsSlider', 3, 1, 3000); 
+            var slider = uaeu.uaeuSlider('.eventsSlider', 4, 1, 3600); 
+            //var slider = uaeu.uaeuVerticalSlider('.sliderSocial', 800);  
+            //var slider = uaeu.uaeuVerticalSlider('.sliderSocial2', 1000);  
+            var slider = uaeu.uaeuSingleSlider('.imageGridSlider', 5000); 
+            
+            var slider = uaeu.uaeuSingleSlider('.testimonialSlider', 4500); 
+            var slider = uaeu.uaeuSlider('.spotlightSlider', 4, 1, 3600); 
+            var slider = uaeu.uaeuSlider('.publicationsSlider', 5, 1, 3600); 
+            var slider = uaeu.uaeuSlider('.mediaSlider', 4, 1, 3600); 
+            var slider = uaeu.uaeuSlider('.partnerSlider', 5, 1, 3200); 				
+		     // TESTIMONIAL DOT THUMB SLIDER
+             $('.testimonialSliderDotThumb').each(function() {
+                var _this = $(this);
+                  $(this).slick({
+                        dots: true,
+                        infinite: true,
+                        pauseOnHover: false,
+                        pauseOnFocus : false,
+                        speed: 1000,
+                        autoplaySpeed: 4200,
+                        arrows: true,
+                        autoplay: true,
+                        nextArrow: '<a class="next  bannerButton"><span class="icon-wrap"></span></a>',
+                        prevArrow: '<a class="prev bannerButton"><span class="icon-wrap"></span></a>',
+                        slidesToShow: 1,
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        fade: true,
+                        appendDots:$(this).next('.dotsContainer').find('.dotsWrap'),
+                        customPaging : function(slider, i) {
+                            var thumbImg = $(slider.$slides[i]).data('thumb');
+                            return '<a class="pager__item"><img src="'+thumbImg+'"> </a>';
+                        } 
+                })
+            });
+          
+            // StudySliderBottom 
+            $(".StudySliderBottom").slick({
+                dots: true,
+                    infinite: true,
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    autoplay: true,
+                    autoplaySpeed: 3000,
+                    responsive: [
+                    {
+                      breakpoint: 1024,
+                      settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2,
+                        infinite: true
+                      }                      
+                    },
+                    {
+                      breakpoint: 600,
+                      settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                      }
+                    },
+                    {
+                      breakpoint: 480,
+                      settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                      }
+                    }
+                   ]    
+            });
+         // StudySliderBottom 
+		// facts Slider
+        $('.factsFiguresSlider').slick({
+            infinite: true,
+            autoplay: true,
+            autoplaySpeed: 4000,
+            slidesToShow:2,
+            rows:2,
+            slidesToScroll: 2,
+            responsive: [               
+                {
+                breakpoint: 768,
+                settings: {
+                    rows:2,
+                    slidesToShow: 2
+                }
+                },
+                {
+                breakpoint: 480,
+                settings: {
+                    rows:1,
+                    slidesToShow: 1
+                }
+                }
+            ]
+        });//facts Slider
+        // About Landing Page
+         $(".aboutTab").champ();
+        var slider = uaeu.uaeuSlider('.leaderShipSlider', 4, 1, 3600); 
+        // hystory slider
+        $('.hystorySlider').slick({
+            infinite: false,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            responsive: [
+                {
+                breakpoint: 768,
+                settings: {
+                    
+                    slidesToShow: 2
+                }
+                },
+                {
+                breakpoint: 480,
+                settings: {
+                    
+                    slidesToShow: 1
+                }
+                }
+            ]
+        });
+        // hystory slider
+        // Admission Landing Page
+         var slider = uaeu.uaeuSlider('.admissionstSlider', 4, 1, 3000);  
+         var slider = uaeu.uaeuVerticalSliderCustomCount('.educationFairSlider', 1000, 3); 
+         var slider = uaeu.uaeuSlider('.latestResearchSlider', 2, 1, 3000);
+         //Academics Landing PAge
+         //$('.selectmenu').selectmenu().selectmenu("menuWidget").css("height","20em");
+		 $('.selectmenu').selectmenu().selectmenu("menuWidget");
+	
+         var slider = uaeu.uaeuSlider('.acadamicSupportSlider', 6, 1, 3000);
+         
+         //Research  
+            var slider = uaeu.uaeuSlider('.projectsImpactSlider', 3, 1, 3000);  
+  
+            // slick slider 2 row
+            $(".two-col-slider").slick({ 
+                autoplay: true,
+                autoplaySpeed: 5000,
+                pauseOnHover: false,
+                arrows: true,
+                dots: false,
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                infinite: true,
+                speed: 600,
+                cssEase: 'linear',
+                rows: 2,
+               // slidesPerRow: 2,
+                responsive: [
+                    
+                    { breakpoint: 640, settings: {
+                        rows: 1,
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }}
+                ]
+            });
+
+            // slick slider 2 row
+           //Experience
+            var slider = uaeu.uaeuSlider('.studentSupportSlider', 4, 1, 3000);  
+            var slider = uaeu.uaeuSlider('.facilitiesSlider', 4, 1, 3200);  
+            var slider = uaeu.uaeuSlider('.studentLifeSlider', 4, 1, 3500);            
+            $('.sliderFullWidth').slick({
+              dots: false,
+              infinite: true,
+              speed: 800,
+              autoplay: true,
+              fade: true,
+              pauseOnHover: false,
+              cssEase: 'linear',
+              autoplaySpeed: 4500,
+              slidesToShow: 1,
+              adaptiveHeight: true
+            });
+             
+            //College home
+            var slider = uaeu.uaeuSliderTwoBlock('.latestNewsTwoSlider', 2, 1, 3000); 
+            var slider = uaeu.uaeuVerticalSliderCustomCount('.eventsVerticalSlider', 1000, 3); 
+            var slider = uaeu.uaeuSlider('.latestBlockSlider', 3, 1, 3000);  
+            var slider = uaeu.uaeuVerticalSliderCustomCount('.verticalSliderList2', 1000, 2);
+            
+            //Department Home
+           var slider = uaeu.uaeuSlider('.unitsSlider', 3, 1, 3000); 
+           var slider = uaeu.uaeuSlider('.imagesBlockStyle4Slider', 2, 1, 3000);
+           
+           //News and Events
+             var slider = uaeu.uaeuSlider('.upcomingSlider', 4, 1, 3200); 
+            
+             
+             $('#archive_submit').on("click",function() {
+                var url = $('.selectmenu').val(); 
+                if (url != '') { window.location = url;}
+            });
+            
+            
+            var slider = uaeu.uaeuSliderTwoBlock('.acadamicSlider', 2, 1, 3000); 
+            var slider = uaeu.uaeuSlider('.featuredeventsSlider', 3, 1, 3000);  
+            //Library
+            
+            $(".libraryTiming").champ();
+            var slider = uaeu.uaeuSlider('.librarySlider', 3, 1, 3000);  
+            var slider = uaeu.uaeuSingleSlider('.librarySpotlightSlider', 4500); 
+            var slider = uaeu.uaeuSlider('.latestNewsInnerSlider', 2, 1, 3000);
+            
+            //CEC
+            var slider = uaeu.uaeuSlider('.accreditationSlider', 4, 1, 3200); 
+            $('.testimonialSliderTwoCol').each(function() {
+                var _this = $(this);
+                  $(this).slick({
+                        dots: true,
+                        infinite: true,
+                        autoplay: true,
+                        speed: 1100,
+                        autoplaySpeed: 3000,
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        responsive: [
+                            {
+                            breakpoint: 990,
+                            settings: {
+                                slidesToShow: 1,
+                                 adaptiveHeight: true, 
+                                slidesToScroll: 1
+                            }
+                            }
+                        ],
+                        appendDots:$(this).next('.dotsContainer').find('.dotsWrap'),
+                        customPaging : function(slider, i) {
+                            var thumbImg = $(slider.$slides[i]).data('thumb');
+                            return '<a class="pager__item"><img src="'+thumbImg+'"> </a>';
+                        }
+                     });
+            });
+        //Program Landing
+          $('.facultySlider').slick({
+                infinite: true,
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                responsive: [
+                    {
+                    breakpoint: 550,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                    }
+                ]
+            });
+
+          $('.testimonialSliderDots').slick({
+                dots: true,
+                infinite: true,
+                speed: 300,
+                arrows: false,
+                slidesToShow: 1,
+                customPaging : function(slider, i) {
+                var thumbImg = $(slider.$slides[i]).data('thumb');
+               // var title = $(slider.$slides[i]).data('title');
+                return '<a class="pager__item"><img src="'+thumbImg+'"> </a>';
+                }
+                
+            });
+            
+         $('.threeRowsSlider').slick({
+            rows: 3,
+            dots: true,
+            arrows: true,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesPerRow: 3,
+                        rows: 3,
+                        slidesToScroll: 1,
+                        slidesToShow: 1,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        rows: 2,
+                        slidesPerRow: 2,
+                        slidesToScroll: 2,
+                        slidesToShow: 2,
+                        dots: true
+                    }
+                }
+            ]
+           });
+            
+            
+        //To highlight the menu item in the side menu according to the page
+		var $sideMenu = $(".sidebarmainNav");
+		if ($sideMenu.length>0){
+
+			//search for the page url in the side menu, if found then highlight the the menu link, and click the parent link to force opening the menu
+			var pathname = window.location.pathname;
+			var topLink;
+			var linkIsFound = false;
+			var $link;
+
+			var urlParts = pathname.split("/")
+			for (i = 0; i < urlParts.length; i++) {
+				if (i == urlParts.length - 1) {
+					if (urlParts[i].indexOf('.') > -1) {
+						// trailing slash not required
+					}
+					else {
+						if (urlParts[i].indexOf('#') > -1) {
+							// trailing slash not required
+						}
+						else {
+							//Assume this is a folder and add a slash if it is not already there
+							if (pathname.substr(-1) != '/') pathname += '/';
+						}
+					}
+				}
+			}
+
+			$link = $sideMenu.find('a[href="' + pathname + '"]');
+			linkIsFound = $link.length > 0;
+
+			//if pathname is a folder path, then try to append index.shtml and search again
+			if(!linkIsFound){
+				$link = $sideMenu.find('a[href="' + pathname + 'index.shtml' + '"]');
+				linkIsFound = $link.length > 0;
+			}
+
+			//if link is found, then do the job
+			if (linkIsFound){
+				$link.addClass("active");
+				
+				var $parent = $link.parent().parent().parent();
+				if ($.contains( $sideMenu.get(0) , $parent.get(0)  )) $parent.addClass("selected");
+				
+				$parent = $link.parent().parent().parent().parent().parent();
+				if ($.contains( $sideMenu.get(0)  , $parent.get(0)  )) $parent.addClass("selected");
+				
+				$parent = $link.parent().parent().parent().parent().parent().parent().parent();
+				if ($.contains( $sideMenu.get(0)  , $parent.get(0)  )) $parent.addClass("selected");				
+			}
+		};
+		// jquery ui selectbox 
+		$( "#datepicker" ).datepicker();
+		$( "#datepicker2" ).datepicker();
+		$( ".datepicker" ).datepicker();
+
+		$(".generalTab").champ();
+
+		// Responsive Table
+		//$('.content-wrapper table').stacktable();
+		//$('.innerSection table').stacktable();
+		
+		if ($('.content-wrapper').length > 0) {
+ 		   $('.content-wrapper table').stacktable();
+		}else if ($('.innerSection').length > 0) {
+			$('.innerSection table').stacktable();
+		}	
+		
+		
+		if ($(".sidebarmainNav").length>0){
+		$('.sidebarmainNav').navAccordion({
+			expandButtonText: '<i class="icon icon-ios-plus-empty"></i>',  //Text inside of buttons can be HTML
+			collapseButtonText: '<i class="icon icon-ios-minus-empty"></i>'
+		});
+      }
+
+});
+
+/******* functions *********/
+
+

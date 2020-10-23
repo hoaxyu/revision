@@ -1,0 +1,208 @@
+// UAEU ChatBot Lastupdate: 30-5-2020
+var uaeuLightColor;
+var uaeuDarkColor;
+var currentColor;
+var langCode;
+var appName = "Ask UAEU";
+var headerTextColor = '#FFFFFF';
+var frameURL= "https://uaeubot.eu-de.mybluemix.net/en/FF0000";
+var frameWidth ="25vw"; 
+var frameHeight ="90vh";
+
+var bottomButtonColor ="#cf3237";
+var bottomButtonHeight ="35px";
+var bottomButtonWidth ="131px";
+
+var topButtonColor = "#000000";
+var topButtonHeight ="35px";
+var topButtonWidth =frameWidth;
+var topBackgroundColor = '#cf3237';
+var closeButtonColor = "#100303";
+var isInitialLoad = true;
+
+function init() {
+
+  var url = window.location.href;
+  //get the destination page url
+  if (url.indexOf('/ar/') > 0) {
+      //Arabic ChatBot
+      langCode = 'ar';
+      appName = "إسأل";
+  } else if (url.indexOf('/en/') > 0) {
+      //English ChatBot
+      langCode = 'en';
+  } else {
+      //Do nothing
+  }
+  $.each($('body').attr('class').split(' '), function (index, className) {
+    if (className.indexOf('red') === 0) {
+        currentColor = className;
+    } else if (className.indexOf('pink') === 0) {
+        currentColor = className;
+    } else if (className.indexOf('blue') === 0) {
+        currentColor = className;
+    } else if (className.indexOf('orange') === 0) {
+        currentColor = className;
+    } else if (className.indexOf('green') === 0) {
+        currentColor = className;
+    } else {
+        currentColor = "red";
+    }
+});
+var htmlStyles = window.getComputedStyle(document.querySelector(":root"));
+var myColor = htmlStyles.getPropertyValue("--blue");
+
+if (currentColor === "blue") {
+    uaeuLightColor = htmlStyles.getPropertyValue("--blue");
+    uaeuDarkColor = htmlStyles.getPropertyValue("--blue-dark");
+
+} else if (currentColor === "green") {
+    uaeuLightColor = htmlStyles.getPropertyValue("--green");
+    uaeuDarkColor = htmlStyles.getPropertyValue("--green-dark");
+
+} else if (currentColor === "pink") {
+    uaeuLightColor = htmlStyles.getPropertyValue("--pink");
+    uaeuDarkColor = htmlStyles.getPropertyValue("--pink-dark");
+
+} else if (currentColor === "orange") {
+    uaeuLightColor = htmlStyles.getPropertyValue("--orange");
+    uaeuDarkColor = htmlStyles.getPropertyValue("--blue-dark");
+
+} else {
+    uaeuLightColor = htmlStyles.getPropertyValue("--red");
+    uaeuDarkColor = htmlStyles.getPropertyValue("--gray-dark");
+}
+//current UAEU theme colors
+var colorCode = uaeuLightColor.replace('#', '');
+frameURL = "https://uaeubot.eu-de.mybluemix.net/" + langCode + "/" + colorCode.trim();
+
+  var yanaBlock = document.querySelector('body');
+  var yanaApp = document.createElement('div');
+  yanaApp.setAttribute('id', 'yana-wrapper');
+  yanaApp.style.position = 'fixed';
+  yanaApp.style.bottom = '0';
+  //yanaApp.style.right = '110px';
+  yanaApp.style.width = frameWidth;
+  yanaApp.style.borderRadius = '4px 4px 0 0';
+  yanaApp.style.zIndex = '9999999999';
+
+  var yanaHeader = document.createElement('div');
+  yanaHeader.setAttribute('id', 'yana-app-header');
+  yanaHeader.style.display = 'block';
+  yanaHeader.style.position = 'relative';
+  yanaHeader.style.height = '35px';
+  yanaHeader.style.width = '131px';
+  if (url.indexOf('/ar/') > 0){
+    yanaHeader.style.right= "20vw";
+    yanaApp.style.left= "110px";
+  } else {
+      yanaHeader.style.right= "-20vw";
+      yanaApp.style.right= "110px";
+  } 
+  yanaHeader.style.borderRadius = '4px 4px 0 0';
+  yanaHeader.style.backgroundColor = topBackgroundColor;
+  yanaHeader.style.zIndex = '9999999999';
+
+  yanaApp.appendChild(yanaHeader);
+  var headerText = document.createElement('p');
+  headerText.setAttribute('id', 'yana-top-paragraph');
+  headerText.style.position = 'relative';
+  headerText.style.padding = '8px';
+  headerText.style.textAlign = 'center';
+  headerText.style.color = headerTextColor;
+  headerText.style.fontWeight = 700;
+  headerText.addEventListener('click', openClose);
+  yanaApp.appendChild(headerText);
+
+  var leftText = document.createElement('span');
+  leftText.setAttribute('id', 'yana-left-text');
+  leftText.innerHTML ="<i class='fa fa-commenting' style='padding:0 5px'></i>" + appName;
+  leftText.style.cursor = 'pointer';
+  leftText.style.display = 'block';
+  headerText.appendChild(leftText);
+
+  var rightText = document.createElement('span');
+  rightText.setAttribute('id', 'yana-right-text');
+  rightText.innerHTML = '-';
+  rightText.style.display = 'none';
+  rightText.style.cursor = 'pointer';
+  rightText.style.position = 'absolute';
+  rightText.style.right = '10px';
+  rightText.style.top = '0px';
+  rightText.style.fontSize = '35px';
+  rightText.style.lineHeight = '5px';
+  rightText.style.padding = '5px';
+  rightText.onmousemove = function () {
+    this.style.backgroundColor = closeButtonColor;
+    this.style.borderRadius = '2px';
+  };
+  rightText.onmouseout = function () {
+    this.style.backgroundColor = '';
+  };
+  headerText.appendChild(rightText);
+  yanaHeader.appendChild(headerText);
+
+  var yanaFrame = document.createElement('iframe');
+  yanaFrame.setAttribute('id', 'yana-app-wrapper');
+  if (!isInitialLoad) {
+    yanaFrame.setAttribute('src', frameURL);
+  }
+  yanaFrame.style.display = 'none';
+  yanaFrame.style.position = 'relative';
+  yanaFrame.style.height = frameHeight;
+  yanaFrame.style.width = frameWidth;
+  yanaFrame.style.borderStyle = 'none';
+  yanaFrame.style.transition = 'visibility 3s, opacity 0.5s linear';
+  yanaApp.appendChild(yanaFrame);
+
+  yanaBlock.appendChild(yanaApp);
+}
+
+if (document.readyState !== 'loading') {
+  init();
+} else {
+  document.addEventListener('DOMContentLoaded', function () {
+    init();
+  });
+}
+
+function openClose() {
+  if (window.screen.width < 1025) {
+    window.open(frameURL, '_blank');
+  } else {
+    var yanaApp = document.getElementById('yana-wrapper');
+    var appHeader = document.getElementById('yana-app-header');
+    var leftText = document.getElementById('yana-left-text');
+    var rightText = document.getElementById('yana-right-text');
+    var iframe = document.getElementById('yana-app-wrapper');
+    var headerText = document.getElementById('yana-top-paragraph');
+    if (iframe.style.display === 'none') {
+      if (isInitialLoad) iframe.setAttribute('src', frameURL);
+      isInitialLoad = false;
+      iframe.style.display = 'block';
+      appHeader.style.width = topButtonWidth;
+      appHeader.style.right = '0px';
+      appHeader.style.height = topButtonHeight;
+      appHeader.style.backgroundColor = topButtonColor;
+      leftText.style.display = 'block';
+      headerText.style.paddingLeft = '18px';
+      headerText.style.textAlign = 'left';
+      rightText.style.display = 'block';
+    } else {
+      iframe.style.display = 'none';
+      appHeader.style.width = bottomButtonWidth;
+      if (url.indexOf('/ar/') > 0) {
+        appHeader.style.right = '20vw';
+      } else {
+        appHeader.style.right = '-20vw';
+      }
+      
+      appHeader.style.height = bottomButtonHeight;
+      appHeader.style.backgroundColor = bottomButtonColor;
+      leftText.style.display = 'block';
+      rightText.style.display = 'none';
+      headerText.style.textAlign = 'center';
+      headerText.style.paddingLeft = '0px';
+    }
+  }
+}

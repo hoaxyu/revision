@@ -1,0 +1,32 @@
+/*!
+ * UAEU JavaScript Google reCAPTCHA 
+ * Web Service Unit, DOIT
+ * Date: 2018-04-04 */
+/***** initiate all needed scripts here in the document ready */
+var url = window.location.href;
+
+$(document).ready(function(){
+	var homeRecaptcha = $('#homeRecaptcha');
+	if(homeRecaptcha.length>0){
+    	
+		homeRecaptcha.attr('data-type','image');
+		homeRecaptcha.attr('data-sitekey','6Ld_cQcTAAAAAJeCXnpY7KMDWrQuZ2hoGxpCm8uC');    	
+		homeRecaptcha.addClass("g-recaptcha");
+		//homeRecaptcha.after('<input type="hidden" class="homehiddenRecaptcha required" name="homehiddenRecaptcha" id="homehiddenRecaptcha" />');
+		//homeRecaptcha.after('<input type="text" class="homehiddenRecaptcha required" name="homehiddenRecaptcha" id="homehiddenRecaptcha" style="visibility: hidden;height: 1px;width: 1px; margin: 0;padding: 0;" />');
+	       if (url.indexOf('/ar/') > 0){
+                       homeRecaptcha.after('<label id="home-recaptcha-error" class="error" style="display:none;">تطلب reCAPTCHA التحقق.</label>');
+                       $.getScript("//www.google.com/recaptcha/api.js?hl=ar");
+                   
+                } else if (url.indexOf('/en/') > 0){
+                     homeRecaptcha.after('<label id="home-recaptcha-error" class="error" style="display:none;">Recaptcha requires verification.</label>');
+                     $.getScript("//www.google.com/recaptcha/api.js");
+                     
+                }else {
+                      //nothing
+                }
+	}	
+		
+    
+});
+

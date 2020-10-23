@@ -1,0 +1,106 @@
+const apiFeedbackUrl = "https://webservices.uaeu.ac.ae/general/Feedback.svc"
+const appFeedbackHeaders = {
+"authorization": "Basic YXV0aHdlYnNlcnZpY2VzYXBwOiZVSk04aWss",
+"content-type": "application/json"
+} 
+
+
+const userFeedbackRate = readCookie('PageFeedbackRate');
+
+var feedbackPageState = {
+   isFeedbackSubmitted : false,
+  lang: "en",
+  langPrefix:"Eng"
+}
+var wsMyPageFeedbackModel = {
+  init: function () {
+    this.setLanguage();
+    wsMyPageFeedbackView.init();
+  },
+  submitFeedback: function (feedback) {
+    //console.log(JSON.stringify(feedback));
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": apiFeedbackUrl + "/ratePage",
+      "method": "POST",
+      "headers": appFeedbackHeaders,
+      "data": JSON.stringify(feedback)
+    }
+    $.ajax(settings).done(function (response) {
+      feedbackPageState.isFeedbackSubmitted = true;
+      wsMyPageFeedbackView.render();
+    });
+  },
+  setLanguage: function () {
+    var  url  =  window.location.href;
+    if (url.indexOf("/ar/") > 0) {
+  
+    } else {
+     
+    }
+  }
+
+}
+var wsMyPageFeedbackView = {
+  init: function () {
+     this.wsPageFeedbackRate = $("#wsPageFeedbackRate");
+     this.feedbackMsgReceived = $("#feedbackMsgReceived");
+     this.feedbackRatingBox = $("#feedbackRatingBox");
+     this.feedbackCommentsBox = $("#feedbackCommentsBox");
+     this.wsPageFeedbackComments = $("#wsPageFeedbackComments");
+     this.feedbackJson = {
+        "helpful" : "",
+        "url" : window.location.href,
+        "cookie" : userFeedbackRate,
+        "comments" : ""
+     }
+     this.render();
+     this.listener();
+  },
+  render: function () {
+   var isFeedbackSubmitted = feedbackPageState.isFeedbackSubmitted;
+   if(isFeedbackSubmitted){
+      this.feedbackMsgReceived.show();
+      this.wsPageFeedbackRate.hide();
+      this.wsPageFeedbackComments.val("");
+   }else{
+     
+   }
+  },
+
+  listener: function () {     
+    $('#wsPageFeedbackRateYesBtn').unbind('click').on('click', function (e) {
+      e.preventDefault();      
+      wsMyPageFeedbackView.feedbackJson.helpful = "Y";
+      createCookie('PageFeedbackRate', wsMyPageFeedbackView.feedbackJson.helpful, 365);            
+      wsMyPageFeedbackView.submitFeedbackToModel();
+       return false;
+    });
+
+    $('#wsPageFeedbackRateNoBtn').unbind('click').on('click', function (e) {
+      e.preventDefault();
+      wsMyPageFeedbackView.feedbackJson.helpful = "N";
+      createCookie('PageFeedbackRate', wsMyPageFeedbackView.feedbackJson.helpful, 365);            
+      wsMyPageFeedbackView.feedbackCommentsBox.show();
+      wsMyPageFeedbackView.feedbackRatingBox.hide();
+       return false;
+    });
+    $('#wsPageFeedbackRateNoCommentsBtn').unbind('click').on('click', function (e) {
+      e.preventDefault();
+      wsMyPageFeedbackView.feedbackJson.comments = wsMyPageFeedbackView.wsPageFeedbackComments.val();
+      wsMyPageFeedbackView.submitFeedbackToModel();
+       return false;
+    });
+    $('#wsPageFeedbackRateCancelBtn').unbind('click').on('click', function (e) {
+      e.preventDefault();
+      wsMyPageFeedbackView.feedbackCommentsBox.hide();
+      wsMyPageFeedbackView.feedbackRatingBox.show();
+       return false;
+    });
+  },
+  submitFeedbackToModel : function(){
+    return wsMyPageFeedbackModel.submitFeedback(wsMyPageFeedbackView.feedbackJson);
+  }
+};
+

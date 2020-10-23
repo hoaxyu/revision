@@ -1,0 +1,238 @@
+/*
+* en_uaeu.css
+* Web Services, UITS
+* This style sheet for the global rules of UAEU English website
+* All media
+* 18/02/2020
+* If you intend to add CSS to it please ensure you add it in the 
+* correct place and also that it is valid CSS and not a mix of 
+* two seperate versions in one class or ID.
+*/
+
+:root {
+  --blue: #0584c9;
+  --red: #cf3238;
+  --green: #849d02;
+  --pink: #cb0270;
+  --orange: #fd9300;
+  --blue-dark: #03537e;
+  --red-dark:#a7272c;
+  --green-dark: #445101;
+  --orange-dark: #ca7500;
+  --pink-dark: #7f0146;
+  --white: #fff;
+  --gray: #EEEEEE;
+  --gray-dark: #383838;
+  --primary: #CF3238;
+  --secondary: #324C65;
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --light: #f8f9fa;
+  --dark: #343a40;
+  
+}
+/*ChatBot Color theme */ 
+body.orange .jss602, body.orange .jss595, body.orange #yana-app-header, body.orange .jss778{background: #ca7500 !important;}
+body.pink .jss602, body.pink .jss595, body.pink #yana-app-header, body.pink .jss778{background: #cb0270 !important;}
+body.blue .jss602, body.blue .jss595, body.blue #yana-app-header, body.blue .jss778{background: #0584c9 !important;}
+body.red .jss602, body.red .jss595, body.red #yana-app-header, body.red .jss778{background: #cf3238 !important;}
+body.green .jss602, body.green .jss595, body.green #yana-app-header, body.green .jss778{background:  var(--green) !important;}
+div.jss564.jss566.jss565{background-color: black !important}
+#yana-wrapper p{line-height: 1;}
+.readMoreBtn.btnRed {background: #f15c5b;display:inline-flex;height:45px;}
+/* Color Theme */
+.color-gray{color: #6d6d6d !important;}
+.text-success{color:#3c763d !important}
+.text-danger{color:#a94442 !important;}
+.text-yellow{color:#ffc107 !important;}
+.text-orange{color:#fd7e14 !important;}
+.error {font-size: 14px;color: #cf3238;}
+/* Happiness Meter */
+.emotion-selector { font-size: 0.7em; color:#fff; z-index:10;margin: -10px 0 0;}
+.emotion-selector i{color:#fff; padding:0 5px;}
+.emotion-selector label { cursor: pointer; padding: 1em }
+.emotion-selector i:hover { color: #CF3238;}
+.emotion-selector .active { color: #E8E8E8;}
+.studyBottomSection{margin-top:0;} 
+.uaeuloader{ position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; z-index: 9999; background: url('/images/loading_spinner.gif') 50% 50% no-repeat rgba(0, 0, 0, 0.4);	}
+/* Add custom Fonts Icons*/
+.imagDescBlock .links {
+    border: 1px solid #fcfcfc
+}
+
+.imagDescBlock .links figure {
+    position: relative
+}
+
+.imagDescBlock .links figure::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: rgba(0, 0, 0, .3);
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+    visibility: hidden
+}
+
+.imagDescBlock .links figure::after {
+    content: "\e0bb";
+    font-family: "uaeu"!important;
+    font-style: normal!important;
+    font-weight: normal!important;
+    font-variant: normal!important;
+    text-transform: none!important;
+    speak: none;
+    line-height: 1;
+    margin: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 65px;
+    position: absolute;
+    left: 50%;
+    z-index: 3;
+    top: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%) translateX(-50%);
+    transform: translateY(-50%) translateX(-50%);
+    text-transform: capitalize;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+    color: #fff
+}
+
+.imagDescBlock .links:hover figure::after,
+.imagDescBlock .links:hover figure::before {
+    opacity: 1;
+    visibility: visible
+}
+
+.imagDescBlock .links figure::after {
+    content: "\e0bb"
+}
+table.auto{
+    table-layout:auto !important;
+}
+ul.list-unstyled li{list-style-image: none !important; list-style: none;}
+ul.sublist-styled >li {list-style: none; list-style-image: none !important;}
+.blockrs{position: absolute; right: 10%;}
+.album img{margin-bottom: 0 !important;}
+.album .imagDescBlock{margin-bottom: 20%;}
+.number {direction: ltr; text-align: left;unicode-bidi: bidi-override;}
+.innerSection.news-detail .sidebar .news-list .news-list-title {max-height: 90px;}
+.aboutSection .programFinder .programFinderRight h6 a{color: #fff !important;}
+#switchLanguage {cursor: pointer}
+.selectmenuStyle{border-color: rgb(169, 169, 169);width: 100%;padding: 8px 15px;border-radius: 3px;height: 51px;}
+#toTop {right:auto !important;left: 33px;}
+/* Happiness Meter */
+.happiness-meter-widget-web-button[dir=ltr] {
+    /*left: 30px !important;
+    right: auto;*/
+}
+.header-search .searchboxwrapper .searchbox{width:155px;}
+/* eServices */
+.khloader{ position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; z-index: 9999; background: url('/images/loading_spinner.gif') 50% 50% no-repeat rgba(0, 0, 0, 0.4);	}
+.uaeuBoxStyle-1 {
+    display:block;
+    padding:10px;
+    border:1px solid #BEBEBE;
+    -webkit-transition:all 0.3s ease-in-out;
+    transition:all 0.3s ease-in-out;
+   font-size: 12px;
+   letter-spacing: 0.05em;
+   margin:0.2em 0.5em 1.2em;
+   background: #eee;
+   -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.125), 0 2px 4px 0 rgba(0, 0, 0, 0.125);
+   -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.125), 0 2px 4px 0 rgba(0, 0, 0, 0.125);
+   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.125), 0 2px 4px 0 rgba(0, 0, 0, 0.125);   
+   }
+   .uaeuBoxStyle-1.bg-blue{background: #253d55 !important;color: #fff !important;}
+   .uaeuBoxStyle-1.bg-blue h4{color: #fff !important;}
+   .uaeuBoxStyle-1 h4{margin: 0 !important;font-size: 1.250em;display: inline-flex;}
+   .uaeuBoxStyle-1 h4 i{padding: 0  5px!important;margin: 0 important;}
+   .uaeuBoxStyle-1 small{font-size:1em;}
+    .tab-style-vert .tab_wrapper>ul li{
+       color: #6d6d6d;
+       margin: 0 5px 10px 0 !important;
+       background: #eee;
+       -webkit-transition: all 0.3s ease-in-out;
+       transition: all 0.3s ease-in-out;
+       border-radius: 8px		
+   }
+   .tab-style-vert .tab_wrapper>ul li.active, .tab-style-vert .tab_wrapper>ul li:hover {
+       border-color: #ff5b5b;
+       color: #fff;
+        background: #cf3238;
+   }
+   .tab-style-vert .tab_wrapper.left_side>ul li {	border-width: 0px;}
+   .tab-style-vert .tab_wrapper.left_side>ul li:after {width: 0px;}	
+   .tab-style-vert .tab_wrapper.left_side .content_wrapper {border: 0;}
+   .tab_wrapper.left_side>ul {border-bottom: 0px;}
+    ul.channel-link{
+        margin-top: 1.3em;
+        margin-bottom: 0 !important;
+        list-style: none;
+        padding-left: 0 !important;
+    }
+    .channel-link li{
+        display: inline-block;
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+    }
+    .channel-link li a{
+        color: #818181 !important;;
+        font-size: 2.25em;
+    }	
+    .rating-symbol{
+        color: #ffc107;
+    font-size: 2.25em}
+    .tab_content > h4:first-child {margin-top: 0px !important;}
+   .tab_content{margin-left: 3em}
+   .br-current-rating {
+       display: inline-block !important;
+      margin: auto 10px;
+       font-size: 1.2em;
+     }
+/* contrast */
+.color-invert {background:#000;color:#fff;}
+.color-invert h2, .color-invert h3{color:#fff !important;}
+.color-invert .footerTopSection *{color:#fff !important;}
+.color-invert .bgGray h2, .color-invert .bgGray h3, .color-invert .partnersSection h2{color:#595959 !important}
+.color-invert .footerTopSection{background: #000;}
+.color-invert .partnersSection {background-color:#f8f8f8;}
+.primary-overlay{position:relative}.primary-overlay::before{content:'';position:absolute;left:0;top:0;width:100%;height:100%;background:rgba(44,44,44,.9)}
+.grey-overlay{position:relative}.grey-overlay::before{content:'';position:absolute;left:0;top:0;width:100%;height:100%;background:rgba(142,142,142,.9)}
+
+.icon-box i {font-size : 2em;padding-right: 10px;color: #666;}
+.icon-box {position: relative; margin: 5px;}
+.icon-left {display: inline-block;vertical-align: middle;width: 2.3em;}
+.icon-left i:hover {color:red;}
+.icon-box h3{font-size: 1em;padding: 0;margin: 0 !important; display: inline-block}
+.icon-box .subTitle{font-size: 1em; color: #393838;}
+.head-icon span{margin: 10px 5px 0}
+
+.bgred_btn{background-color: #cf3238;color: #fff !important; margin-bottom: 0;border: none;padding: 0.5rem 0.8rem !important;}
+.bgred_btn:hover{background: #ec1c24;color: #fff !important;}
+
+/* Landscape phones and smaller */
+@media only screen and (max-width: 480px) {
+#feedbackRatingBox{text-align:left}
+}
+/* Portrait tablets and small desktops */
+@media screen and (max-width: 767px)  {
+#feedbackRatingBox{text-align:left}
+}
+@media only screen and (max-width: 990px) {
+    
+	
+
+}

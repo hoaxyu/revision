@@ -1,0 +1,94 @@
+// various site wide functions, plugins and scripts
+/******* Global variables *********/
+
+
+/***** initiate all needed scripts here in the document ready */
+$(document).ready(function(){
+	
+	// To add svg object on button has class redmoreBtn
+	$(".readMoreBtn").append('<svg><rect x="0" y="0" fill="none" width="100%" height="100%"></rect></svg>');
+    //cms link at the bottom of the page
+	var $de1 = $("#de");
+    var $de2 = $("#directedit");
+	if($de1.length>0 && $de2.length>0){
+        $("#de").appendTo($("#directedit"));
+    }
+   //Hide the Push Nav Menu   
+    if(!(window.location.href.indexOf("www.uaeu.ac.ae") !== -1) || (window.location.href.indexOf("blogs.uaeu.ac.ae") !== -1) || (window.location.href.indexOf("ou-common.uaeu.ac.ae") !== -1)){   
+      $('.push-nav-wrapper').show();
+    
+    }
+    //Hide the ChatBot from the Library and NML website
+   if((window.location.href.indexOf("www.library.uaeu.ac.ae") >= 0) || (window.location.href.indexOf("nml.uaeu.ac.ae") >= 0)){
+	   $('head').append('<style type="text/css">#yana-wrapper{visibility: hidden;}</style>');
+	   	$(window).on("load", function(){
+		  $("#yana-wrapper").remove();
+		});
+    
+        
+    }
+   
+	
+    $("body").on("click","#switchLanguage", function(){
+		var url = window.location.href;
+		var switchFlag = true;
+		
+		//get the destination page url
+		if (url.indexOf('/ar/') > 0){
+			url = url.replace('/ar/','/en/');
+		} else if (url.indexOf('/en/') > 0){
+			url = url.replace('/en/','/ar/');	
+		} else if (url.indexOf('/ar_') > 0){
+			url = url.replace('/ar_','/en_');	
+		} else if (url.indexOf('/en_') > 0){
+			url = url.replace('/en_','/ar_');				
+		} else {
+			switchFlag = false;
+		}
+		
+		//replace the language param if it is passed along with the url
+		if (url.indexOf('language=en') > 0){
+			url = url.replace('language=en','language=ar');
+		} else if (url.indexOf('language=ar') > 0){
+			url = url.replace('language=ar','language=en');	
+		} else {
+			//nothing
+		}		
+		
+		//check the destination page url if exists
+		if (switchFlag){
+			jQuery.ajax({
+				url:      url,
+				dataType: 'text',
+				type:     'GET',
+				complete:  function(xhr){
+					var status = xhr.status;
+					if(status === 200) {
+						window.location.href = url;
+					} else if(status === 404) {
+						$("#destinationPageNotFound").fancybox().trigger('click');
+					}else{
+						$("#destinationPageHasErrorUrl").html(url);
+						$("#destinationPageHasError").fancybox().trigger('click');
+					}					
+				}
+			});
+		}
+    });	
+	
+	
+	
+	
+    
+});
+
+/******* functions *********/
+
+//Returns true if it is a DOM element
+function isElement(o){
+  return (
+    typeof HTMLElement === "object" ? o instanceof HTMLElement : //DOM2
+    o && typeof o === "object" && o !== null && o.nodeType === 1 && typeof o.nodeName==="string"
+    );
+}
+

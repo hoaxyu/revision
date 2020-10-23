@@ -1,0 +1,52 @@
+var execludes = new RegExp("(?:webdev|webtest|cms.uaeu.ac.ae|2017)");
+var myURL = document.URL;
+if (!execludes.test(myURL)){
+
+    <!-- Global site tag (gtag.js) - Google Ads: 575149042 -->
+    $.getScript( "//www.googletagmanager.com/gtag/js?id=AW-575149042" )
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-575149042');
+    
+    <!-- Facebook Pixel Code -->
+
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window,document,'script',
+        '//connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '502731066886722'); 
+        fbq('track', 'PageView');
+        document.write('<noscript><img height="1" width="1" src="//www.facebook.com/tr?id=502731066886722&ev=PageView&noscript=1"/></noscript>');
+    <!-- End Facebook Pixel Code -->
+
+    <!-- Linkedin Code -->
+      _linkedin_partner_id = "2512970";
+      window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+      window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+    (function(){var s = document.getElementsByTagName("script")[0];
+      var b = document.createElement("script");
+      b.type = "text/javascript";b.async = true;
+      b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+      s.parentNode.insertBefore(b, s);})();
+      document.write('<noscript><img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=2512970&fmt=gif" /></noscript>');
+    <!-- End Linkedin Code -->
+    
+		
+		$(document).ready(function(){
+		   var uaeuSchema = document.createElement('script');
+		   uaeuSchema.type = 'application/ld+json';
+		   uaeuSchema.text = JSON.stringify({ "@context": "https://schema.org","@type": "CollegeOrUniversity","name": "United Arab Emirates University","alternateName": "UAEU","url": "https://www.uaeu.ac.ae/en/","logo":"https://www.uaeu.ac.ae/images/uaeulogo.png","contactPoint": {"@type": "ContactPoint","telephone": "+971-3-7134343","contactType": "customer service","areaServed": "AE", "availableLanguage": ["en","Arabic"]},"sameAs": ["https://www.facebook.com/UAEUNews",  "https://twitter.com/uaeu_news",  "https://www.instagram.com/uaeunews/", "https://www.youtube.com/user/TheUAEUMedia", "https://www.uaeu.ac.ae/ar/"]});
+         //console.log(uaeuSchema);
+			document.head.appendChild(uaeuSchema);
+         
+		});
+}
+
+
+
+
